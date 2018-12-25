@@ -1,0 +1,74 @@
+{% load staticfiles %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>Album example · Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+  </head>
+  <body>
+
+  <!-- Navbar -->
+  {% include 'partials/_navbar.html' %}
+
+<main role="main">
+
+  <section class="jumbotron text-center">
+    <div class="container">
+      <h1 class="jumbotron-heading">Welcome To My Blog</h1>
+      <p class="lead text-muted">Hey My name is Mahmudul.I love To Make Web Applications.
+      My Favourite Languages Are PHP,Python,JavaScript</p>
+      <p>
+        <a href="mailto:mahmudul.hassan240@gmail.com" class="btn btn-primary my-2">Email Me</a>
+
+      </p>
+      <img src="{% static 'images.jpg' %}" alt="">
+    </div>
+  </section>
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+
+      <div class="row">
+
+        {% for blog in blogs %}
+          <div class="card mb-4">
+            <img class="card-img-top" src="{{blog.image.url}}" alt="Card image cap">
+            <div class="card-body">
+              <h2 class="card-title">{{blog.title}}</h2>
+              <p class="card-text">{{blog.summary}}</p>
+              <a href="{% url "blogs:detail" blog.id %}" class="btn btn-primary">Read More &rarr;</a>
+            </div>
+            <div class="card-footer text-muted">
+              Posted on {{blog.pub_date}} by
+              <a href="#">Start Bootstrap</a>
+            </div>
+          </div>
+        {% endfor %}
+
+
+      </div>
+    </div>
+  </div>
+
+</main>
+
+
+  <!-- Footer -->
+  {% include 'partials/_footer.html' %}
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+
+</body>
+</html>
